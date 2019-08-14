@@ -1,0 +1,98 @@
+<%- include includes/header-cliente.ejs %>
+
+<section class="box__questions cliente-perguntas">
+	<div class="container">
+		<div class="bg-white d-none">
+			<h3>Perguntas feitas por você</h3>
+
+			<div class="questions-list">
+				<% if(question.length) { %>
+					<% for(let i = 0; i < question.length; i++) { %>
+					<div class="row questions-list__item">
+						<div class="col-md-10">
+							<div class="questions-list__content">
+								<div class="bg-white">
+									<p>
+										<%= question[i].question %>
+									</p>
+								</div>
+								<% if(question[i].answer) { %>
+								<figure class="questions__photo">
+									<img alt="<%= question[i].fromDoctor.name %>" src="<% if(question[i].fromDoctor.profilePicture) { %>/profilePicture/<%= question[i].fromDoctor._idDoctor %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+								</figure>
+
+								<p class="h4">
+									<a href="/medico-detalhe/<%= question[i].fromDoctor._idDoctor %>"><%= question[i].fromDoctor.name %></a>
+								</p>
+								<div class="questions__answer">
+									<p>
+										<%= question[i].answer %>
+									</p>
+								</div>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				<% } else { %>
+					<p>Você ainda não fez nenhuma pergunta</p>
+				<% } %>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<form action="" class="form form-relative ">
+				<div class="mosaic-item">
+					<h3>Indiciar um paciente(indique amigos)</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="fazer-uma-pergunta" id="fazer-uma-pergunta" placeholder="Faça uma pergunta" cols="30" rows="10"></textarea>
+							</div>
+						</div>
+						<div class="col-md-12 row-submit">
+							<input type="submit" class="btn btn-gradient" value="Enviar pergunta">
+						</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-12 atendimento-paciente contabilidade">
+				<div class="mosaic-item">
+					<div class="row">
+						<div class="col-md-4">
+							<h2 class="title-mosaic"><strong>Perguntas</strong> respondidas</h2>
+						</div>
+						<div class="col-md-8">
+							<form action="/" method="GET" id="pesquisa" class="form">
+								<div class="form-group relative d-flex">
+									<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+									<div class="icons-search">
+										<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+										<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-12 row-perguntas">
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div class="pergunta">
+											<h3 class="title">Pergunta</h3>
+											<p class="pergunta">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+											<p class="pergunta">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div class="resposta">
+											<h3 class="title">Resposta</h3>
+											<p class="resposta">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+											<p class="resposta">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>
